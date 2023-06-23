@@ -44,7 +44,7 @@ class Team extends Authenticatable
     }
 
     public static function getAllUsers(){
-        $result = DB::table('team')
+        $result = DB::table('teams')
         ->select(['id', 'name', 'email', 'country_id'])
         ->get()
         ->toArray();

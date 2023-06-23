@@ -134,11 +134,11 @@
         <div class="row mb-3">
                 <div class="col-md-4">
                     <label for="date_filter">Date Filter:</label>
-                    <input type="date" id="startdatefilter" class="form-control" name="startdatefilter">
+                    <input type="date"  id="startdatefilter" class="form-control" name="startdatefilter">
                 </div>
                 <div class="col-md-4">
                     <label for="date_filter">Date Filter:</label>
-                    <input type="date" id="enddatefilter" class="form-control" name="enddatefilter">
+                    <input type="date"  id="enddatefilter" class="form-control" name="enddatefilter">
                 </div>
                 <div class="col-md-4">
                     <label for="country_filter">Country Filter:</label>
@@ -147,7 +147,18 @@
                 <div class="col-md-4">
                     <button id="filterbtn" class="btn btn-primary mt-4">Apply Filters</button>
                 </div>
+
+                
+
+        
         </div>
+        <a href="/admin/export"> <button >Download Excel</button> </a>
+        <form action="{{ route('import.excel') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="excel_file">
+            <button type="submit">Import</button>
+        </form>
+        
 
 
         <table id="user-table" class="table">
@@ -636,9 +647,6 @@
 
 
 
-
-
-
                 // Appply filters on Yajra Table
                 $(document).ready(function() {
                     $('#filterbtn').on('click', function () {
@@ -672,6 +680,11 @@
                         });
                     });
                 });
+
+
+
+
+                    
 
         </script>
             
