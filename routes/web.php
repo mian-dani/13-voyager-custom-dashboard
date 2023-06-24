@@ -22,6 +22,8 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
         
         Route::middleware('auth')->group(function(){
+
+            
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
         Route::get('/yajrainitialize', [UserController::class, 'yajraInitialize'])->name('yajrainitialize');
         Route::post('/createusers', [UserController::class, 'create'])->name('users.create');
@@ -30,12 +32,16 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post("/updateuser/{id}", [UserController::class, 'updateuser'])->name('updateuser');
 
 
+
                          /////////   FILTER //////
         Route::get('/applyfilters', [UserController::class, 'applyFilter']);
 
 
+
          ////////  ROUTES OF YAJRA TABLE THAT COMES AFTER REDIRCT TO NEW VIEW AFTER CLICKING ON SPECIFIC COUNTRY IN GRPAH
         Route::get('/countrywisedetail', [UserController::class, 'countryWiseDetail']);
+
+
 
         // route to export Excel file
         Route::get('/export', [UserController::class, 'export'])->name('export');

@@ -18,7 +18,6 @@ use App\Imports\ExcelImport;
 class UserController extends Controller
 {
                 /// initializing Yajra table
-
                 public function yajraInitialize(Request $request){
                     if ($request->ajax()) {
                         $users = Team::with('country')->get();
@@ -42,7 +41,7 @@ class UserController extends Controller
                     // Mian view on route ("/dashboard")   
                 public function dashboard(){
                     
-                    //////////////          Daily User's Register Frequency Chart handler       ////////////
+                    //////////////       Daily User's Register Frequency Chart handler       ////////////
                     $startDate = Carbon::now()->subDays(30); // Retrieve data for the last 7 days
                     $endDate = Carbon::now();
             
@@ -92,7 +91,7 @@ class UserController extends Controller
             
             
             
-                                                ////////// CREATE  ///////////////
+                                                ////////// CREATE OPERATION  ///////////////
                     public function create(Request $request){
                         
                         $validatedData = $request->validate([
@@ -129,7 +128,7 @@ class UserController extends Controller
             
             
             
-                                                     ////////// DELETE  ///////////////
+                                                     ////////// DELETE OPERATION  ///////////////
                     public function delete($id){
                         $user = Team::findOrFail($id);
                         $user->delete();
@@ -235,7 +234,7 @@ class UserController extends Controller
             
             
             
-                        
+                        ////////////////    POPULATE DATA IN YAJRA TABLE AFTER CLICKING GRAPH ON NEXT PAGE ///
                             public function countryWiseDetail(Request $request){
                                 $country = $request->query('country');
                                 $cid = Country::select(['id'])->where('name', $country)->first();
@@ -267,6 +266,8 @@ class UserController extends Controller
                             }
             
             
+
+                             /////////////////     EXCEL DATA IMPORT  //////////////////
                             public function import(Request $request){
                                 $file = $request->file('excel_file');
                                 
@@ -274,4 +275,9 @@ class UserController extends Controller
                                 
                                 return redirect()->back()->with('success', 'Data imported successfully.');
                             }
+
+
+
+
+                            
 }

@@ -61,9 +61,7 @@
                         $('#user-table').DataTable();
                 })
 
-                // $(document).ready(function () {
-                //     initializeDataTable();
-                // });
+                
 
 
                 function initializeDataTable() {
