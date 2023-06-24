@@ -121,6 +121,7 @@
         </section>
 
 
+        <!-- Country wise Users Chart -->
         <section>
             <div style=" width:100%;display:flex; justify-content:center; align-items:center; flex-direction:column">
                 <h2>Country Wise Graph Showing Users per Country</h2>
@@ -130,6 +131,8 @@
         </section>
 
 
+
+        <!-- Apply filters on table -->
     <div class="container">
         <div class="row mb-3">
                 <div class="col-md-4">
@@ -149,9 +152,10 @@
                 </div>
 
                 
-
-        
         </div>
+
+
+        <!-- Import export table in excel buttons -->
         <a href="/admin/export"> <button >Download Excel</button> </a>
         <form action="{{ route('import.excel') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -161,6 +165,7 @@
         
 
 
+        <!-- Yajra table model -->
         <table id="user-table" class="table">
                 <thead>
                     <tr>
@@ -179,6 +184,10 @@
 
                 <!-- Create New User Button -->
         <button class="btn btn-create"  id="createUserBtn">Create New User</button>
+
+
+
+
 
 
 
@@ -224,11 +233,11 @@
                             <input type="hidden" name="image_url" id="imageURLInput">
                         </div>
                         <input type="submit"  class="button" value="submit">
-                        <!-- onclick="uploadAndSubmit()" -->
                     </form>
                     </div>
                 </div>
             </div>
+
 
 
                 <!-- PopUp Modal to Update a  User's Record  -->
@@ -260,6 +269,8 @@
                     </div>
                 </div>
             </div>
+
+
 
 
                 <!-- PopUp Modal to View  a  User's Data  -->
@@ -322,6 +333,8 @@
 
 
 
+
+
             /////////////// Users according to Countries Graph on next View //////////-->
             
             window.addEventListener('DOMContentLoaded', (event) => {
@@ -362,8 +375,9 @@
 
 
 
+
+
         <script>
-            
 
                //  //////////// Crud Operations Yajra Table  ////////////////////-->
 
@@ -420,6 +434,8 @@
                     }
                 });
             }
+
+
 
 
                 // Show PopUp form for new user  
@@ -615,12 +631,13 @@
                     });
 
 
-                //Will fetch and Populate Data in Form to View
 
+
+
+                //Will fetch and Populate Data in Form to View
             function viewClicked(uid){
                     userId = uid;
                     
-                        // Perform AJAX request to fetch user data
                         $.ajax({
                             url: '/admin/fetchuserdata/' + userId, 
                             type: 'GET',
@@ -647,6 +664,8 @@
 
 
 
+
+                    
                 // Appply filters on Yajra Table
                 $(document).ready(function() {
                     $('#filterbtn').on('click', function () {
